@@ -8,7 +8,7 @@
       <List />
 
       <!-- <div class="list" v-for="list in lists" :key=""> -->
-
+        
       <!-- </div> -->
 
       <!-- <div class="page">
@@ -124,11 +124,12 @@ h3 {
 </style>
 
 <script>
-import List from "@/components/List.vue"
+import List from '@/components/List.vue'
 
-export default {
+export default{
   components: {
-    List,
-  },
+    List
+  }
 }
 </script>
+

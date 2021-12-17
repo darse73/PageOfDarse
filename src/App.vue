@@ -4,8 +4,8 @@
     <BigTitle />
     <div class="contents">
       <div class="main">
-        <router-view />
-        <Greeting />
+      <router-view />
+      <Greeting />
       </div>
     </div>
   </div>
