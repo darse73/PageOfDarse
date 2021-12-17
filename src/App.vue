@@ -18,6 +18,10 @@
   list-style: none;
   font-size: 62.5%;
 }
+.router-link {
+  text-decoration: none;
+  color: black;
+}
 </style>
 
 <style scoped>

@@ -1,14 +1,26 @@
 <template>
   <div class="header">
-    <div class="header-logo">
-      <img class="logo-img" src="../assets/jerryfish.png" />
-      <h1 class="logo-text">Darse</h1>
-    </div>
+    <router-link to="/" class="router-link"
+      ><div class="header-logo">
+        <img class="logo-img" src="../assets/jerryfish.png" />
+        <h1 class="logo-text">Darse</h1>
+      </div></router-link
+    >
     <ul class="button-container">
-      <li class="button">WORKS</li>
-      <li class="button">MEMORANDUM</li>
-      <li class="button">TWEET</li>
-      <li class="button">UPLOAD</li>
+      <li class="button">
+        <router-link class="router-link" to="/works">WORKS</router-link>
+      </li>
+      <li class="button">
+        <router-link class="router-link" to="/memorandum"
+          >MEMORANDUM</router-link
+        >
+      </li>
+      <li class="button">
+        <router-link class="router-link" to="/tweet">TWEET</router-link>
+      </li>
+      <li class="button">
+        <router-link class="router-link" to="/upload">UPLOAD</router-link>
+      </li>
     </ul>
   </div>
 </template>
@@ -46,7 +58,7 @@
   position: relative;
   line-height: 8rem;
   margin-right: 8rem;
-  font-size: 2rem;
+  font-size: 3rem;
 }
 .button::before {
   content: "";
