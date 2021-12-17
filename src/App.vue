@@ -1,28 +1,49 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div class="app">
+    <Header />
+    <BigTitle />
+    <div class="contents">
+      <div class="main">
+        <router-view />
+        <Greeting />
+      </div>
+    </div>
   </div>
 </template>
 
-<script>
-import HelloWorld from './components/HelloWorld.vue'
-
-export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
-}
-</script>
-
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+* {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  font-size: 62.5%;
 }
 </style>
+
+<style scoped>
+.contents {
+  background-color: rgb(243, 243, 253);
+  padding: 0 8%;
+}
+.main {
+  display: grid;
+  background-color: rgba(210, 247, 255, 0.466);
+  grid-template-columns: 7fr 3fr;
+  grid-template-rows: 1fr;
+  padding: 5rem;
+}
+</style>
+
+<script>
+import Header from "@/components/Header.vue"
+import BigTitle from "@/components/BigTitle.vue"
+import Greeting from "@/components/Greeting.vue"
+
+export default {
+  components: {
+    Header,
+    BigTitle,
+    Greeting,
+  },
+}
+</script>
