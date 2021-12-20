@@ -36,31 +36,22 @@
 </style>
 
 <script>
-import { collection, addDoc } from "firebase/firestore"
-import { db } from "@/firebase.js"
-import firebase from "firebase/app"
+import { getStorage, ref, uploadBytesResumable } from "firebase/storage"
 
 export default {
   data() {
     return {
-      inputTweet: "asdfasdfa",
     }
   },
   methods: {
     async tweet() {
-      const docRef = await addDoc(collection(db, "messages"), {
-        comments: "assf", //this.inputTweet
-      })
-      console.log(docRef)
-
-      const storage = firebase.storage
+      const storage = getStorage();
       const file = document.getElementById("file").files[0]
-      const storageRef = firebase.storage().ref()
+      const storageRef = ref(storage, `image/${file.name}`);
       const metadata = {
         contentType: "image/*"
       }
-
-      const uploadTask = storageRef.child(`image/${file.name}`).put(file, metadata)
+      const uploadTask = uploadBytesResumable(storageRef, file, metadata)
       console.log(uploadTask)
     },
   },
