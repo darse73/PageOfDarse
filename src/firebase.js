@@ -1,5 +1,6 @@
 import { initializeApp } from 'firebase/app';
 import { getStorage } from "firebase/storage"
+import { getFirestore } from "firebase/firestore"
 
 // Set the configuration for your app
 // TODO: Replace the following with your app's Firebase project configuration
@@ -18,3 +19,5 @@ const firebaseApp = initializeApp(firebaseConfig);
 // Get a reference to the storage service, which is used to create references in your storage bucket
 const storage = getStorage(firebaseApp);
 console.log(storage)
+export const db = getFirestore()
+console.log(db)

@@ -7,14 +7,15 @@
     <div class="form">
         <div class="form-title">
         <h3>タイトル</h3>
-        <input type="text"></div>
-        <div class="img">
+        <input type="text" v-model="title">
+        </div>
+        <div class="form-img">
             <h3>プレビュー画像または動画</h3>
             <input type="file" id="file" name="img" accept="image/*" >
         </div>
-        <div class="comment">
+        <div class="form-comment">
           <h3>コメント</h3>
-          <textarea name="comment" cols="17" rows="7"></textarea>
+          <textarea name="comment" cols="17" rows="7" v-model="comment"></textarea>
         </div>
     <button v-on:click="tweet">送信</button>
     </div>
@@ -37,10 +38,14 @@
 
 <script>
 import { getStorage, ref, uploadBytesResumable } from "firebase/storage"
+import { collection, addDoc } from "firebase/firestore"
+import { db } from "@/firebase.js"
 
 export default {
   data() {
     return {
+      title:"",
+      comment:""
     }
   },
   methods: {
@@ -53,6 +58,12 @@ export default {
       }
       const uploadTask = uploadBytesResumable(storageRef, file, metadata)
       console.log(uploadTask)
+
+      const docRef = await addDoc(collection(db,"input"), {
+        title: this.title,
+        comment: this.comment
+      })
+      console.log(docRef)
     },
   },
 }
