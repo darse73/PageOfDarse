@@ -21,4 +21,4 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 getAnalytics(app);
 export const db = getFirestore();
-export const storage = firebase.storage()
+// export const storage = firebase.storage()

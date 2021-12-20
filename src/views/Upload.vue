@@ -38,7 +38,7 @@
 <script>
 import { collection, addDoc } from "firebase/firestore"
 import { db } from "@/firebase.js"
-import { storage } from "@/firebase.js"
+import firebase from "firebase/app"
 
 export default {
   data() {
@@ -53,14 +53,15 @@ export default {
       })
       console.log(docRef)
 
+      const storage = firebase.storage
       const file = document.getElementById("file").files[0]
-      const storageRef = storage.ref()
+      const storageRef = firebase.storage().ref()
       const metadata = {
         contentType: "image/*"
       }
 
       const uploadTask = storageRef.child(`image/${file.name}`).put(file, metadata)
-  console.log(uploadTask)
+      console.log(uploadTask)
     },
   },
 }
