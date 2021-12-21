@@ -50,6 +50,7 @@ export default {
   },
   methods: {
     async tweet() {
+      //img
       const storage = getStorage();
       const file = document.getElementById("file").files[0]
       const storageRef = ref(storage, `image/${file.name}`);
@@ -59,11 +60,23 @@ export default {
       const uploadTask = uploadBytesResumable(storageRef, file, metadata)
       console.log(uploadTask)
 
+      //title,comment,date
+      const now = new Date()
+      const year = now.getFullYear()
+      const month = now.getMonth() + 1
+      const date = now.getDate()
       const docRef = await addDoc(collection(db,"input"), {
         title: this.title,
-        comment: this.comment
+        comment: this.comment,
+        date: `${year}年${month}月${date}日`
       })
       console.log(docRef)
+
+      file.value = ""
+      this.title = ""
+      this.comment = ""
+
+      alert("送信成功！")
     },
   },
 }
