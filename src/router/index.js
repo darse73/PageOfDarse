@@ -5,6 +5,7 @@ import Works from "../views/Works.vue"
 import Memorandum from "../views/Memorandum"
 import Tweet from "../views/Tweet"
 import Upload from "../views/Upload.vue"
+import Calculator from "../views/works/Calculator.vue"
 
 Vue.use(VueRouter)
 
@@ -33,6 +34,11 @@ const routes = [
     path: "/upload",
     name: "Upload",
     component: Upload
+  },
+  {
+    path: "/works/calculator",
+    name: "Calculator",
+    component: Calculator
   }
 ]
 

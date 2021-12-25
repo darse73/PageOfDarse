@@ -5,10 +5,19 @@
         <img class="title-img" src="../assets/jerryfish.png" />
         <h2 class="title-text">最近更新されたページ</h2>
       </div>
-      <List />
+      <div class="lists" v-for="data in datas" :key="data.id">
+        <router-link :to="data.url" class="router-link">
+        <List>
+          <template v-slot:date>{{ data.date }}</template>
+          <template v-slot:title>{{ data.title }}</template>
+          <template v-slot:img><img :src="imgUrls[data.id]" alt="画像" class="img"></template>
+          <template v-slot:comment>{{ data.comment }}</template>
+        </List>
+        </router-link>
+      </div>
 
       <!-- <div class="list" v-for="list in lists" :key=""> -->
-        
+
       <!-- </div> -->
 
       <!-- <div class="page">
@@ -86,7 +95,10 @@
   font-size: 2.5rem;
   line-height: 5rem;
 }
-.page {
+.img {
+  width: 100%;
+}
+/* .page {
   margin: 0 2rem 2rem 5rem;
   padding: 1rem;
   display: grid;
@@ -120,16 +132,60 @@ h3 {
   grid-column: 2;
   text-align: left;
   padding-left: 1rem;
-}
+} */
 </style>
 
 <script>
-import List from '@/components/List.vue'
+import List from "@/components/List.vue"
+import { collection, getDocs } from "firebase/firestore"
+import { db } from "@/firebase.js"
+import { getStorage, ref, listAll, getDownloadURL } from "@firebase/storage"
 
-export default{
+export default {
   components: {
-    List
+    List,
+  },
+  data() {
+    return {
+      datas: [],
+      imgPaths: [],
+      imgUrls: [],
+    }
+  },
+  async created() {
+      let num = 0
+    const querySnapshot = await getDocs(collection(db, "data"))
+    querySnapshot.forEach((doc) => {
+      this.datas.push({
+        date: doc.data().date,
+        title: doc.data().title,
+        comment: doc.data().comment,
+        url:doc.data().url,
+        id: num,
+      })
+      num += 1
+      console.log(num)
+    })
+
+    const storage = getStorage()
+    const listRef = ref(storage, "image")
+    listAll(listRef).then((res) => {
+      res.items.forEach((itemRef) => {
+        this.imgPaths.push(itemRef.fullPath)
+      })
+    })
+    .then(() => {
+      this.imgPaths.forEach((path) => {
+      console.log(path)
+      const imgRef = ref(storage, `${path}`)
+      getDownloadURL(imgRef).then((url) => {
+        this.imgUrls.push(url)
+      })
+    })
+
+    console.log(this.imgPaths)
+
+    })
   }
 }
 </script>
-
