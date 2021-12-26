@@ -31,8 +31,9 @@
 }
 .main {
   display: grid;
-  background-color: rgba(210, 247, 255, 0.466);
+  background-color: rgb(224, 247, 252);
   grid-template-columns: 7fr 3fr;
+  grid-column-gap: 5rem;
   grid-template-rows: 1fr;
   padding: 5rem;
 }
