@@ -10,7 +10,10 @@
         <List>
           <template v-slot:date>{{ data.date }}</template>
           <template v-slot:title>{{ data.title }}</template>
-          <template v-slot:img><img :src="imgUrls[data.id]" alt="画像" class="img"></template>
+          <template v-slot:img>
+            <video v-if="imgUrls[data.id].includes('mp4')" :src="imgUrls[data.id]" class="img" loop autoplay muted></video>
+            <img v-else :src="imgUrls[data.id]" alt="画像" class="img">
+          </template>
           <template v-slot:comment>{{ data.comment }}</template>
         </List>
         </router-link>
@@ -96,8 +99,9 @@
   line-height: 5rem;
 }
 .img {
-  width: 100%;
+  height: 85%;
 }
+
 /* .page {
   margin: 0 2rem 2rem 5rem;
   padding: 1rem;

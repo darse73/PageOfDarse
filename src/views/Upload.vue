@@ -114,19 +114,18 @@ export default {
       if (this.switching === "1" || this.switching === "2") {
         const fileHolder = document.getElementById("file")
         const file = fileHolder.files[0]
-        if (
-          this.title.value === "" ||
-          fileHolder.value === "" ||
-          this.comment.value === ""
-        ) {
-          alert("項目を埋めてください。")
-        } else {
+        // if (
+        //   this.title.value === "" ||
+        //   fileHolder.value === "" ||
+        //   this.comment.value === ""
+        // ) {
+        //   alert("項目を埋めてください。")
+        // } else {
           //img
           const storage = getStorage()
           const storageRef = ref(storage, `image/${file.name}`)
           if (this.switching === "1") {
             const metadata = {
-              contentType: "image/*",
               customMetadata: {
                 "type": "works"
               }
@@ -146,7 +145,6 @@ export default {
           } else if (this.switching === "2") {
             //img
             const metadata = {
-              contentType: "image/*",
               customMetadata: {
                 "type": "memorandum"
               }
@@ -155,7 +153,7 @@ export default {
             console.log(uploadTask)
 
             //title,comment,date
-            const docRef = await addDoc(collection(db, "memorandum"), {
+            const docRef = await addDoc(collection(db, "data"), {
               title: this.title,
               comment: this.comment,
               date: `${year}年${month}月${date}日`,
@@ -166,7 +164,8 @@ export default {
           }
           fileHolder.value = ""
           this.title = ""
-        }
+          this.url = ""
+        
       } else if (this.switching === "3") {
         //title,comment,date
         const docRef = await addDoc(collection(db, "data"), {

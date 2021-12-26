@@ -19,7 +19,7 @@
   padding: 1.5rem;
   display: grid;
   grid-template-rows: 4rem 15rem;
-  grid-template-columns: 1fr 3fr 1fr 5fr;
+  grid-template-columns: 1fr 2fr 1fr 1fr 5fr;
   background-color: rgb(255, 255, 255);
 }
 .date {
@@ -32,7 +32,7 @@
   padding-left: 0.5rem;
   font-size: 2rem;
   grid-row: 1;
-  grid-column: 3/5;
+  grid-column: 3/6;
   line-height: 3rem;
 }
 .preview {
