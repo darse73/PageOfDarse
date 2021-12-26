@@ -13,7 +13,7 @@
         正直仕組みをよくわかっていないところもあるので、そこは分かり次第MEMORUNDOMの方に載せていこうと思います！
       </p>
 
-      <a href="works-holder/calculator/index.html"
+      <a href="https://darse73.github.io/calculator/"
         ><img src="../../assets/calcurator.png"
       /></a>
       <p id="go-the-work">画像を押すと実際の作品ページに行きます</p>
