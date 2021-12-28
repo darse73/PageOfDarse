@@ -11,7 +11,7 @@
           <template v-slot:date>{{ data.date }}</template>
           <template v-slot:title>{{ data.title }}</template>
           <template v-slot:img>
-            <video v-if="imgUrls[data.id].includes('mp4')" :src="imgUrls[data.id]" class="img" loop autoplay muted></video>
+            <video v-if="`${imgUrls[data.id]}`.includes('mp4')" :src="imgUrls[data.id]" class="img" loop autoplay muted></video>
             <img v-else :src="imgUrls[data.id]" alt="画像" class="img">
           </template>
           <template v-slot:comment>{{ data.comment }}</template>
@@ -99,6 +99,7 @@
   line-height: 5rem;
 }
 .img {
+  padding-top: 7.5%;
   height: 85%;
 }
 
@@ -178,16 +179,25 @@ export default {
         this.imgPaths.push(itemRef.fullPath)
       })
     })
-    .then(() => {
-      this.imgPaths.forEach((path) => {
+    .then(async () => {
+    //   this.imgPaths.forEach((path) => {
+    //     console.log(path)
+    //   const imgRef = ref(storage, `${path}`)
+    //   getDownloadURL(imgRef).then((url) => {
+    //     this.imgUrls.push(url)
+    //   })
+    // })
+    for (const path of this.imgPaths) {
       console.log(path)
       const imgRef = ref(storage, `${path}`)
-      getDownloadURL(imgRef).then((url) => {
+      await getDownloadURL(imgRef).then((url) => {
         this.imgUrls.push(url)
       })
-    })
+    }
 
+    this.imgUrls.reverse()
     console.log(this.imgPaths)
+    console.log(this.imgUrls)
 
     })
   }
