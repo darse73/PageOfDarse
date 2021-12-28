@@ -85,9 +85,15 @@ h3 {
 
 <script>
 import List from "@/components/List.vue"
-import { collection, getDocs } from "firebase/firestore"
+import { collection, getDocs, orderBy, query, where } from "firebase/firestore"
 import { db } from "@/firebase.js"
-import { getStorage, ref, listAll, getDownloadURL } from "@firebase/storage"
+import {
+  getStorage,
+  ref,
+  listAll,
+  getMetadata,
+  getDownloadURL,
+} from "@firebase/storage"
 
 export default {
   components: {
@@ -101,14 +107,19 @@ export default {
     }
   },
   async created() {
-      let num = 0
-    const querySnapshot = await getDocs(collection(db, "data"))
+    let num = 0
+    const q = query(
+      collection(db, "data"),
+      where("type", "==", "works"),
+      orderBy("date", "desc")
+    )
+    const querySnapshot = await getDocs(q)
     querySnapshot.forEach((doc) => {
       this.datas.push({
         date: doc.data().date,
         title: doc.data().title,
         comment: doc.data().comment,
-        url:doc.data().url,
+        url: doc.data().url,
         id: num,
       })
       num += 1
@@ -117,33 +128,35 @@ export default {
 
     const storage = getStorage()
     const listRef = ref(storage, "image")
-    listAll(listRef).then((res) => {
-      res.items.forEach((itemRef) => {
-        this.imgPaths.push(itemRef.fullPath)
+    listAll(listRef)
+      .then((res) => {
+        res.items.forEach((itemRef) => {
+          this.imgPaths.push(itemRef.fullPath)
+        })
       })
-    })
-    .then(async () => {
-    //   this.imgPaths.forEach((path) => {
-    //     console.log(path)
-    //   const imgRef = ref(storage, `${path}`)
-    //   getDownloadURL(imgRef).then((url) => {
-    //     this.imgUrls.push(url)
-    //   })
-    // })
-    for (const path of this.imgPaths) {
-      console.log(path)
-      const imgRef = ref(storage, `${path}`)
-      await getDownloadURL(imgRef).then((url) => {
-        this.imgUrls.push(url)
+      .then(async() => {
+        //   this.imgPaths.forEach((path) => {
+        //     console.log(path)
+        //   const imgRef = ref(storage, `${path}`)
+        //   getDownloadURL(imgRef).then((url) => {
+        //     this.imgUrls.push(url)
+        //   })
+        // })
+        for (const path of this.imgPaths) {
+          console.log(path)
+          const imgRef = ref(storage, `${path}`)
+          await getMetadata(imgRef).then( (metadata) => {
+            console.log(metadata.customMetadata.type)
+            if (metadata.customMetadata.type === "works") {
+                 getDownloadURL(imgRef).then((url) => {
+                this.imgUrls.push(url)
+              })
+            }
+          })
+        }
+        console.log(this.imgPaths)
+        console.log(this.imgUrls)
       })
-    }
-
-    this.datas.reverse()
-    this.imgUrls.reverse()
-    console.log(this.imgPaths)
-    console.log(this.imgUrls)
-
-    })
-  }
+  },
 }
 </script>
