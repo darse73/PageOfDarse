@@ -142,7 +142,7 @@ h3 {
 
 <script>
 import List from "@/components/List.vue"
-import { collection, getDocs } from "firebase/firestore"
+import { collection, getDocs, query, orderBy } from "firebase/firestore"
 import { db } from "@/firebase.js"
 import { getStorage, ref, listAll, getDownloadURL } from "@firebase/storage"
 
@@ -158,8 +158,9 @@ export default {
     }
   },
   async created() {
-      let num = 0
-    const querySnapshot = await getDocs(collection(db, "data"))
+    let num = 0
+    const q = query(collection(db, "data"), orderBy("date", "desc"))
+    const querySnapshot = await getDocs(q)
     querySnapshot.forEach((doc) => {
       this.datas.push({
         date: doc.data().date,
@@ -194,8 +195,7 @@ export default {
         this.imgUrls.push(url)
       })
     }
-
-    this.imgUrls.reverse()
+    
     console.log(this.imgPaths)
     console.log(this.imgUrls)
 
