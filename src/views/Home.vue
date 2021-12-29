@@ -6,7 +6,7 @@
         <h2 class="title-text">最近更新されたページ</h2>
       </div>
       <div class="lists" v-for="data in datas" :key="data.id">
-        <router-link :to="data.url" class="router-link">
+        <router-link :to="`${data.url}`" class="router-link">
         <List>
           <template v-slot:date>{{ data.date }}</template>
           <template v-slot:title>{{ data.title }}</template>
@@ -142,7 +142,7 @@ h3 {
 
 <script>
 import List from "@/components/List.vue"
-import { collection, getDocs, query, orderBy } from "firebase/firestore"
+import { collection, getDocs, query, orderBy, where } from "firebase/firestore"
 import { db } from "@/firebase.js"
 import { getStorage, ref, listAll, getDownloadURL } from "@firebase/storage"
 
@@ -159,7 +159,7 @@ export default {
   },
   async created() {
     let num = 0
-    const q = query(collection(db, "data"), orderBy("date", "desc"))
+    const q = query(collection(db, "data"), where("type", "in", ["works","memorandum"]), orderBy("date", "desc"))
     const querySnapshot = await getDocs(q)
     querySnapshot.forEach((doc) => {
       this.datas.push({
