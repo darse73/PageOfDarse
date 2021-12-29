@@ -6,7 +6,8 @@
       <p>使った言語はHTML,css,JavaScript！</p>
       <p>初めてのjsは作動したらうれしいけど、作動するまでが長い！</p>
       <p>前回作った電卓から改良をしてもう少しきれいに、性能もよくしたよ！</p>
-      <p>それと今回はコードを見やすく載せてみる🔥</p>
+      <img src="@/assets/calculator2.png" alt=""/>
+      <!-- <p>それと今回はコードを見やすく載せてみる🔥</p> -->
 
       <!-- <img src="../../assets/calculator2.png" />
         <p
@@ -33,17 +34,23 @@
             <a href="https://codepen.io">CodePen</a>.</span
           >
         </p> -->
-      <p>result を見る場合は×0.25にしてみてね！</p>
+      <!-- <p>result を見る場合は×0.25にしてみてね！</p> -->
       <div>
         デカいのみたい場合は<a
           class="to-caliculate2"
-          href="newFunction/index.html"
+          href="https://darse73.github.io/calculator2/index.html"
           >ここ</a
         >をクリックしてね！
       </div>
     </template>
   </Contents>
 </template>
+
+<style scoped>
+img {
+  width: 100%;
+}
+</style>
 
 <script>
 import Contents from "@/components/Contents.vue"
