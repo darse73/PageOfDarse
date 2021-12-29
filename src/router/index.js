@@ -7,6 +7,8 @@ import Tweet from "../views/Tweet"
 import Upload from "../views/Upload.vue"
 import Calculator from "../views/works/Calculator.vue"
 import Calculator2 from "../views/works/Calculator2.vue"
+import MvError from "../views/memorandums/MvError.vue"
+import Hover from "../views/memorandums/Hover.vue"
 
 Vue.use(VueRouter)
 
@@ -42,9 +44,19 @@ const routes = [
     component: Calculator
   },
   {
-    path: "works/calculator2",
+    path: "/works/calculator2",
     name: "Calculator2",
     component: Calculator2
+  },
+  {
+    path: "/memorandums/mv-error",
+    name: "MvError",
+    component: MvError
+  },
+  {
+    path: "/memorandums/hover",
+    name: "Hover",
+    component: Hover
   }
 ]
 

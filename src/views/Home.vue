@@ -159,7 +159,7 @@ export default {
   },
   async created() {
     let num = 0
-    const q = query(collection(db, "data"), where("type", "in", ["works","memorandum"]), orderBy("date", "desc"))
+    const q = query(collection(db, "data"), where("type", "in", ["works","memorandums"]), orderBy("date", "desc"))
     const querySnapshot = await getDocs(q)
     querySnapshot.forEach((doc) => {
       this.datas.push({

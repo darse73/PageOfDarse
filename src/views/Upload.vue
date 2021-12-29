@@ -146,7 +146,7 @@ export default {
             //img
             const metadata = {
               customMetadata: {
-                "type": "memorandum"
+                "type": "memorandums"
               }
             }
             const uploadTask = uploadBytesResumable(storageRef, file, metadata)
@@ -158,7 +158,7 @@ export default {
               comment: this.comment,
               date: `${year}年${month}月${date}日`,
               url: this.url,
-              type: "memorandum"
+              type: "memorandums"
             })
             console.log(docRef)
           }

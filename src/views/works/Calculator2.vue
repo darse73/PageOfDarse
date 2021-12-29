@@ -1,17 +1,14 @@
 <template>
-  <div class="contents">
-    <div class="explanation">
-      <img class="s-jerryfish" id="upjerry" src="../assets/jerryfish.png" />
-      <h2>電卓を作ってみました！</h2>
+  <Contents>
+    <template v-slot:title-text> 電卓を作ってみました！</template>
+    <template v-slot:main>
+      <p>こんにちは！ダースだよ～</p>
+      <p>使った言語はHTML,css,JavaScript！</p>
+      <p>初めてのjsは作動したらうれしいけど、作動するまでが長い！</p>
+      <p>前回作った電卓から改良をしてもう少しきれいに、性能もよくしたよ！</p>
+      <p>それと今回はコードを見やすく載せてみる🔥</p>
 
-      <div class="main">
-        <p>こんにちは！ダースだよ～</p>
-        <p>使った言語はHTML,css,JavaScript！</p>
-        <p>初めてのjsは作動したらうれしいけど、作動するまでが長い！</p>
-        <p>前回作った電卓から改良をしてもう少しきれいに、性能もよくしたよ！</p>
-        <p>それと今回はコードを見やすく載せてみる🔥</p>
-
-        <img src="../assets/calculator2.png" />
+      <!-- <img src="../../assets/calculator2.png" />
         <p
           class="codepen"
           data-height="300"
@@ -35,20 +32,25 @@
             (<a href="https://codepen.io/darse73">@darse73</a>) on
             <a href="https://codepen.io">CodePen</a>.</span
           >
-        </p>
-        <script
-          async
-          src="https://cpwebassets.codepen.io/assets/embed/ei.js"
-        ></script>
-        <p>result を見る場合は×0.25にしてみてね！</p>
-        <div>
-          デカいのみたい場合は<a
-            class="to-caliculate2"
-            href="newFunction/index.html"
-            >ここ</a
-          >をクリックしてね！
-        </div>
+        </p> -->
+      <p>result を見る場合は×0.25にしてみてね！</p>
+      <div>
+        デカいのみたい場合は<a
+          class="to-caliculate2"
+          href="newFunction/index.html"
+          >ここ</a
+        >をクリックしてね！
       </div>
-    </div>
-  </div>
+    </template>
+  </Contents>
 </template>
+
+<script>
+import Contents from "@/components/Contents.vue"
+
+export default {
+  components: {
+    Contents,
+  },
+}
+</script>

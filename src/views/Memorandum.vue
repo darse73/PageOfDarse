@@ -110,7 +110,7 @@ export default {
     let num = 0
     const q = query(
       collection(db, "data"),
-      where("type", "==", "memorandum"),
+      where("type", "==", "memorandums"),
       orderBy("date", "desc")
     )
     const querySnapshot = await getDocs(q)
@@ -147,7 +147,7 @@ export default {
           const imgRef = ref(storage, `${path}`)
           await getMetadata(imgRef).then( (metadata) => {
             console.log(metadata.customMetadata.type)
-            if (metadata.customMetadata.type === "memorandum") {
+            if (metadata.customMetadata.type === "memorandums") {
                  getDownloadURL(imgRef).then((url) => {
                 this.imgUrls.push(url)
               })
