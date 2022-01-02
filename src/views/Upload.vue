@@ -107,23 +107,17 @@ export default {
       this.pushT = "on"
     },
     async submit() {
-      // const now = new Date()
-      // const year = now.getFullYear()
-      // let month = now.getMonth() + 1
-      // let date = now.getDate()
-      // if(month != "10" && month != "11" && month && "12") {
-      //   month = `0${month}`
-      // }
       if (this.switching === "1" || this.switching === "2") {
         const fileHolder = document.getElementById("file")
         const file = fileHolder.files[0]
-        // if (
-        //   this.title.value === "" ||
-        //   fileHolder.value === "" ||
-        //   this.comment.value === ""
-        // ) {
-        //   alert("項目を埋めてください。")
-        // } else {
+        if (
+          this.title.value === "" ||
+          fileHolder.value === "" ||
+          this.comment.value === "" ||
+          this.url.value === ""
+        ) {
+          alert("項目を埋めてください。")
+        } else {
           //img
           const storage = getStorage()
           const storageRef = ref(storage, `image/${file.name}`)
@@ -140,7 +134,6 @@ export default {
             const docRef = await addDoc(collection(db, "data"), {
               title: this.title,
               comment: this.comment,
-              // date: `${year}年${month}月${date}日`,
               date: serverTimestamp(),
               url: this.url,
               type: "works"
@@ -160,27 +153,36 @@ export default {
             const docRef = await addDoc(collection(db, "data"), {
               title: this.title,
               comment: this.comment,
-              // date: `${year}年${month}月${date}日`,
+              date: serverTimestamp(),
               url: this.url,
               type: "memorandums"
             })
             console.log(docRef)
           }
+      this.comment = ""
+      alert("送信成功！")
           fileHolder.value = ""
           this.title = ""
           this.url = ""
         
-      } else if (this.switching === "3") {
+      }} else if (this.switching === "3") {
+        if (
+          this.title.value === "" ||
+          this.comment.value === ""
+        ) {
+          alert("項目を埋めてください。")
+        } else {
         //title,comment,date
         const docRef = await addDoc(collection(db, "data"), {
           comment: this.comment,
-          // date: `${year}年${month}月${date}日`,
+              date: serverTimestamp(),
           type: "tweet"
         })
         console.log(docRef)
-      }
       this.comment = ""
       alert("送信成功！")
+      }
+      }
     },
   },
 }
