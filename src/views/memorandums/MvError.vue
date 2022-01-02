@@ -2,6 +2,7 @@
     <Contents>
         <template v-slot:title-text>PowerShellでmvを使おうとした時に、<br>
             <span>パス ～ へのアクセスが拒否されました。</span>というエラーが出た。</template>
+        <template v-slot:date>2021/9/21</template>
         <template v-slot:main>
             <p>こんにちは！ダースです。</p>
             <p>vscodeで新しくディレクトリを作るときに間違えて本来作りたい場所とは別の場所に作ってしまうことはあるあるですよね笑</p>

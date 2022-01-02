@@ -107,8 +107,27 @@ export default {
     )
     const querySnapshot = await getDocs(q)
     querySnapshot.forEach((doc) => {
+      const d = `${
+        doc.data().date && doc.data().date.toDate && doc.data().date.toDate()
+      }`
+      const dateArr = d.split(/ /)
+      const sliceArr = dateArr.slice(1, 4)
+      const str = `${sliceArr[2]}/${sliceArr[0]}/${sliceArr[1]}`
+      const repStr = str
+        .replace("Jan", "01")
+        .replace("Feb", "02")
+        .replace("Mar", "03")
+        .replace("Apl", "04")
+        .replace("May", "05")
+        .replace("Jun", "06")
+        .replace("Jul", "07")
+        .replace("Aug", "08")
+        .replace("Sep", "09")
+        .replace("Oct", "10")
+        .replace("Nov", "11")
+        .replace("Dec", "12")
       this.datas.push({
-        date: doc.data().date,
+        date: repStr,
         comment: doc.data().comment,
         id: num,
       })

@@ -1,6 +1,7 @@
 <template>
 <Contents>
   <template v-slot:title-text>電卓を作ってみました！</template>
+  <template v-slot:date>2021/9/6</template>
   <template v-slot:main>
     <p>こんにちは！ダースです。使った言語はHTML,css,JavaScriptです。</p>
     <p>初めてのjsは作動したらうれしいけど、作動するまでが長い！</p>

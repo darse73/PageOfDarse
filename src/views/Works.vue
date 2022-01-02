@@ -6,7 +6,7 @@
         <h2 class="title-text">WORKS 最近更新されたページ</h2>
       </div>
       <div class="lists" v-for="data in datas" :key="data.id">
-        <router-link :to="data.url" class="router-link">
+        <router-link :to="`${data.url}`" class="router-link">
           <List>
             <template v-slot:date>{{ data.date }}</template>
             <template v-slot:title>{{ data.title }}</template>
@@ -43,7 +43,7 @@
 }
 .img {
   padding-top: 7.5%;
-  height: 85%;
+  width: 100%;
 }
 
 /* .page {
@@ -115,12 +115,31 @@ export default {
     )
     const querySnapshot = await getDocs(q)
     querySnapshot.forEach((doc) => {
+      const d = `${
+        doc.data().date && doc.data().date.toDate && doc.data().date.toDate()
+      }`
+      const dateArr = d.split(/ /)
+      const sliceArr = dateArr.slice(1, 4)
+      const str = `${sliceArr[2]}/${sliceArr[0]}/${sliceArr[1]}`
+      const repStr = str
+        .replace("Jan", "01")
+        .replace("Feb", "02")
+        .replace("Mar", "03")
+        .replace("Apl", "04")
+        .replace("May", "05")
+        .replace("Jun", "06")
+        .replace("Jul", "07")
+        .replace("Aug", "08")
+        .replace("Sep", "09")
+        .replace("Oct", "10")
+        .replace("Nov", "11")
+        .replace("Dec", "12")
       this.datas.push({
-        date: doc.data().date,
+        date: repStr,
         title: doc.data().title,
         comment: doc.data().comment,
-        url: doc.data().url,
         id: num,
+        url:doc.data().url
       })
       num += 1
       console.log(num)

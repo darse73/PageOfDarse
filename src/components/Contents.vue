@@ -3,7 +3,8 @@
     <div class="contents">
       <div class="title">
         <img src="@/assets/jerryfish.png" alt="くらげ" class="s-jerryfish" />
-        <h2><slot name="title-text"></slot></h2>
+        <h2><slot name="title-text"></slot>
+        <span class="date">作成日 <slot name="date"></slot></span></h2>
       </div>
       <div class="main">
         <slot name="main"></slot>
@@ -15,16 +16,24 @@
 <style scoped>
 .title {
   display: flex;
-  height: 5rem;
-  padding-bottom: 6rem;
+  position: relative;
+  margin-bottom: 10rem;
 }
 .s-jerryfish {
+  height: 5rem;
   width: 5rem;
   padding-right: 2rem;
 }
 .title h2 {
+  padding-top: 0.8rem;
   font-size: 2.5rem;
-  line-height: 5rem;
+}
+.date {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  font-size: 2rem;
+  transform: translateY(120%);
 }
 .main {
   font-size: 2.5rem;

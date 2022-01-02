@@ -18,9 +18,12 @@
   margin: 2rem 3rem 0;
   padding: 1.5rem;
   display: grid;
-  grid-template-rows: 4rem 15rem;
-  grid-template-columns: 1fr 2fr 1fr 1fr 5fr;
+  grid-row-gap: 1rem;
+  grid-template-columns: 1fr 2fr 0.8fr 0.2fr 1fr 5fr;
   background-color: rgb(255, 255, 255);
+}
+.list:hover {
+  transform: scale(1.01);
 }
 .date {
   font-size: 1.5rem;
@@ -32,16 +35,16 @@
   padding-left: 0.5rem;
   font-size: 2rem;
   grid-row: 1;
-  grid-column: 3/6;
+  grid-column: 3/7;
   line-height: 3rem;
 }
 .preview {
   grid-row: 2;
-  grid-column: 1/3;
+  grid-column: 1/4;
 }
 .comment {
   font-size: 1.5rem;
   grid-row: 2;
-  grid-column: 4/7;
+  grid-column: 5/7;
 }
 </style>

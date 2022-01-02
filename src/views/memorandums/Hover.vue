@@ -1,6 +1,7 @@
 <template>
     <Contents>
         <template v-slot:title-text>hoverの使い方</template>
+        <template v-slot:date>2021/10/1</template>
         <template v-slot:main>
             <p>こんにちは！ダースです。</p>
             <p>今回はhoverについてです。</p>
