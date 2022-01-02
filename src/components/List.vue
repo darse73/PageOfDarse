@@ -24,6 +24,7 @@
 }
 .list:hover {
   transform: scale(1.01);
+    transition: all 0.1s ease 0s;
 }
 .date {
   font-size: 1.5rem;

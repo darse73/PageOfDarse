@@ -5,6 +5,7 @@ import Works from "../views/Works.vue"
 import Memorandum from "../views/Memorandum"
 import Tweet from "../views/Tweet"
 import Upload from "../views/Upload.vue"
+import About from "../views/About.vue"
 import Calculator from "../views/works/Calculator.vue"
 import Calculator2 from "../views/works/Calculator2.vue"
 import MvError from "../views/memorandums/MvError.vue"
@@ -37,6 +38,11 @@ const routes = [
     path: "/upload",
     name: "Upload",
     component: Upload
+  },
+  {
+    path: "/about",
+    name: "About",
+    component: About
   },
   {
     path: "/works/calculator",

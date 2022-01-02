@@ -111,10 +111,10 @@ export default {
         const fileHolder = document.getElementById("file")
         const file = fileHolder.files[0]
         if (
-          this.title.value === "" ||
+          this.title === "" ||
           fileHolder.value === "" ||
-          this.comment.value === "" ||
-          this.url.value === ""
+          this.comment === "" ||
+          this.url === ""
         ) {
           alert("項目を埋めてください。")
         } else {
@@ -164,11 +164,9 @@ export default {
           fileHolder.value = ""
           this.title = ""
           this.url = ""
-        
       }} else if (this.switching === "3") {
         if (
-          this.title.value === "" ||
-          this.comment.value === ""
+          this.comment === ""
         ) {
           alert("項目を埋めてください。")
         } else {

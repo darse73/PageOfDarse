@@ -21,6 +21,9 @@
       <li class="button">
         <router-link class="router-link" to="/upload">UPLOAD</router-link>
       </li>
+      <li class="button">
+        <router-link class="router-link" to="/about">ABOUT</router-link>
+      </li>
     </ul>
   </div>
 </template>
