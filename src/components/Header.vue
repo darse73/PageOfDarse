@@ -1,6 +1,6 @@
 <template>
   <div class="header">
-    <router-link to="/" class="router-link"
+    <router-link to="/home" class="router-link"
       ><div class="header-logo">
         <img class="logo-img" src="../assets/jerryfish.png" />
         <h1 class="logo-text">Darse</h1>

@@ -99,6 +99,7 @@ export default {
     }
   },
   async created() {
+
     let num = 0
     const q = query(
       collection(db, "data"),

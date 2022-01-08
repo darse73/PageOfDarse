@@ -2,6 +2,7 @@
   <div class="app">
     <Header />
     <BigTitle />
+    <CutIn />
     <div class="contents">
       <div class="main">
       <router-view />
@@ -43,12 +44,28 @@
 import Header from "@/components/Header.vue"
 import BigTitle from "@/components/BigTitle.vue"
 import Greeting from "@/components/Greeting.vue"
+import CutIn from "@/components/CutIn.vue"
+import store from "@/store/index.js"
 
 export default {
   components: {
     Header,
     BigTitle,
     Greeting,
+    CutIn,
   },
+  methods: {
+    detectPath(path) {
+      const pathArr = path.split("/")
+      const title = pathArr.slice(-1)
+      console.log(title[0])
+      store.commit("changeTitle", title[0])
+    }
+  },
+  watch: {
+    $route (to) {
+      this.detectPath(to.path)
+    }
+  }
 }
 </script>

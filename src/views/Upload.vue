@@ -4,6 +4,9 @@
       <img class="title-img" src="../assets/jerryfish.png" />
       <h2 class="title-text">最近更新されたページ</h2>
     </div>
+    <div class="explanation">
+      <h3>※このページは（今のところ）主がアップロードするように作られています</h3>
+    </div>
     <div class="form">
       <div class="form-selected">
         <h3>種類を選んでください</h3>
@@ -42,10 +45,11 @@
           rows="7"
           v-model="comment"
           required
+          class="form-comment"
         ></textarea>
       </div>
       <div class="none" v-else></div>
-      <button v-on:click="submit">送信</button>
+      <button v-on:click="submit" class="submit">送信</button>
     </div>
   </div>
 </template>
@@ -62,8 +66,22 @@
   font-size: 2.5rem;
   line-height: 5rem;
 }
+.explanation {
+  margin: 5rem 3rem;
+  font-size: 2rem;
+}
+.form {
+  margin: 5rem 3rem;
+}
+.form-selected {
+  font-size: 2.5rem;
+}
+.form-title, .form-img, .form-comment, .form-url, .submit {
+  font-size: 1.8rem;
+  margin-top: 1.5rem;
+}
 .on {
-  background-color: rgba(0, 0, 0, 0.151);
+  background-color: rgb(207, 207, 207);
 }
 </style>
 
