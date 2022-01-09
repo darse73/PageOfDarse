@@ -1,6 +1,6 @@
 <template>
   <div class="header">
-    <router-link to="/home" class="router-link"
+    <router-link to="/" class="router-link"
       ><div class="header-logo">
         <img class="logo-img" src="../assets/jerryfish.png" />
         <h1 class="logo-text">Darse</h1>
@@ -60,7 +60,7 @@
 .button {
   position: relative;
   line-height: 8rem;
-  margin-right: 8rem;
+  margin-right: 5rem;
   font-size: 3rem;
 }
 .button::before {

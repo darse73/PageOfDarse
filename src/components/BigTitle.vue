@@ -29,13 +29,13 @@
 }
 span {
   color: rgba(0, 89, 255, 0.699);
-  font-size: 7rem;
+  font-size: 6rem;
 }
 .title-text h6 {
-  font-size: 5rem;
+  font-size: 4rem;
   margin-bottom: 8rem;
 }
 .title-text h1 {
-  font-size: 11rem;
+  font-size: 10rem;
 }
 </style>

@@ -56,16 +56,21 @@ export default {
   },
   created: function() {
     const path = location.pathname
+    console.log(path)
     const pathArr = path.split("/")
     const title = pathArr.slice(-1)
-    console.log(title[0])
+      if(title[0] === "") {
+        title[0] = "HOME"
+      }
     store.commit("changeTitle", title[0])
   },
   methods: {
     detectPath(path) {
       const pathArr = path.split("/")
       const title = pathArr.slice(-1)
-      console.log(title[0])
+      if(title[0] === "") {
+        title[0] = "HOME"
+      }
       store.commit("changeTitle", title[0])
     }
   },

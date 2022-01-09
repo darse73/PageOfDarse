@@ -28,7 +28,7 @@
   padding: 2rem;
   border: 0.2rem solid hsl(194, 89%, 81%);
   text-align: center;
-  font-size: 3rem;
+  font-size: 2.5rem;
 }
 .details li {
   margin-bottom: 1rem;
