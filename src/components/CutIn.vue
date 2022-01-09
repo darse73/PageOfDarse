@@ -1,12 +1,25 @@
 <template>
-    <div class="cut-in">
+  <transition name="cutIn">
+    <div v-show="show" class="cut-in">
         <div class="title">{{ title }}</div>
-    </div>
+    </div></transition>
 </template>
 
 <style scoped>
+.cutIn-leave-active,
+.cutIn-enter-active {
+    transition: opacity 1s
+}
+.cutIn-enter,
+.cutIn-leave-to {
+    opacity: 0;
+}
+.cutIn-enter-to,
+.cutIn-leave {
+    opacity: 1;
+}
 .cut-in {
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     background-color: rgba(147, 230, 255, 0.911);
@@ -25,6 +38,30 @@
 
 <script>
 export default {
+    data() {
+        return {
+            show:false
+            }
+    },
+    created() {
+        this.show = true
+        setTimeout(() => {
+            this.show = false
+        },1000)
+    },
+    methods: {
+    shift() {
+        this.show = true
+        setTimeout(() => {
+            this.show = false
+        },1000)
+    }
+  },
+  watch: {
+    $route () {
+      this.shift()
+    }
+  },
     computed: {
         title() {
             return this.$store.state.title

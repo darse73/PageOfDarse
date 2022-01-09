@@ -54,6 +54,13 @@ export default {
     Greeting,
     CutIn,
   },
+  created: function() {
+    const path = location.pathname
+    const pathArr = path.split("/")
+    const title = pathArr.slice(-1)
+    console.log(title[0])
+    store.commit("changeTitle", title[0])
+  },
   methods: {
     detectPath(path) {
       const pathArr = path.split("/")
