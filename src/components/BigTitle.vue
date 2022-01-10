@@ -45,7 +45,7 @@
   text-align: center;
   width: 100%;
   position: absolute;
-  top: 60%;
+  top: 55%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
@@ -58,7 +58,7 @@
   margin-bottom: 3rem;
 }
 .span-tex {
-  font-size: 8.5rem;
+  font-size: 8.3rem;
   display: inline-block;
 }
 }
@@ -80,7 +80,7 @@
   margin-bottom: 3rem;
 }
 .span-tex {
-  font-size: 4.5rem;
+  font-size: 4.3rem;
 }
 }
 </style>

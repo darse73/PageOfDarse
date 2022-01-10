@@ -25,6 +25,7 @@
     background-color: rgba(147, 230, 255, 0.911);
     width: 100%;
     height: 100vh;
+    z-index: 3;
 }
 .title {
     position: absolute;
