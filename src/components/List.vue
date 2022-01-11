@@ -1,18 +1,16 @@
 <template>
   <div class="list">
-    <h3 class="date"><slot name="date">2021.12.12</slot></h3>
-    <h3 class="title"><slot name="title">電卓を改良しました！</slot></h3>
-    <div class="preview"><slot name="img"></slot></div>
+    <h3 class="date"><slot name="date" /></h3>
+    <h3 class="title"><slot name="title" /></h3>
+    <div class="preview"><slot name="img" /></div>
     <div class="comment">
-      <slot name="comment">
-      改良して、一応満足な仕上がりにできた！<br />
-      質問があったら、これからコメント欄を作るつもりなのでそこに書いてね！
-      </slot>
+      <slot name="comment" />
     </div>
   </div>
 </template>
 
 <style scoped>
+@media screen and (min-width: 1024px){
 .list {
   border: 0.2rem solid rgb(2, 61, 255);
   margin: 2rem 3rem 0;
@@ -47,5 +45,32 @@
   font-size: 1.5rem;
   grid-row: 2;
   grid-column: 5/7;
+}
+}
+@media screen and (max-width: 599px){
+.list {
+  border: 0.2rem solid rgb(2, 61, 255);
+  margin: 2rem 3rem 0;
+  padding: 1.5rem;
+  display: grid;
+  background-color: rgb(255, 255, 255);
+}
+.date {
+  font-size: 1.2rem;
+  grid-row: 1;
+}
+.title {
+  font-size: 1.7rem;
+  grid-row: 2;
+  padding-bottom: 0.5rem;
+
+}
+.preview {
+  display: none;
+}
+.comment {
+  font-size: 1.4rem;
+  grid-row: 3;
+}
 }
 </style>

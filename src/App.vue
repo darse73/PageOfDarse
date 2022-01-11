@@ -38,6 +38,30 @@
   grid-template-rows: 1fr;
   padding: 5rem;
 }
+@media screen and (max-width: 1024px){
+  .contents {
+    padding: 0 5%;
+  }
+.main {
+  display: grid;
+  background-color: rgb(224, 247, 252);
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+  padding: 5rem;
+}
+}
+@media screen and (max-width: 599px){
+  .contents {
+    padding: 0 5%;
+  }
+.main {
+  display: grid;
+  background-color: rgb(224, 247, 252);
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+  padding: 3rem 0rem;
+}
+}
 </style>
 
 <script>
@@ -56,12 +80,12 @@ export default {
   },
   created: function() {
     const path = location.pathname
-    console.log(path)
     const pathArr = path.split("/")
     const title = pathArr.slice(-1)
       if(title[0] === "") {
         title[0] = "HOME"
       }
+    title[0] = title[0].toLocaleUpperCase()
     store.commit("changeTitle", title[0])
   },
   methods: {
@@ -71,6 +95,7 @@ export default {
       if(title[0] === "") {
         title[0] = "HOME"
       }
+    title[0] = title[0].toLocaleUpperCase()
       store.commit("changeTitle", title[0])
     }
   },

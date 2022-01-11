@@ -2,10 +2,7 @@
   <div class="home">
     
     <div class="update-lists">
-      <div class="title">
-        <img class="title-img" src="../assets/jerryfish.png" />
-        <h2 class="title-text">最近更新されたページ</h2>
-      </div>
+      <Title><template v-slot:front>HOME</template><template v-slot:back>最近更新されたページ</template></Title>
       <div class="lists" v-for="data in datas" :key="data.id">
         <router-link :to="`${data.url}`" class="router-link">
           <List>
@@ -31,17 +28,6 @@
 </template>
 
 <style scoped>
-.title {
-  display: flex;
-  height: 5rem;
-}
-.title-img {
-  width: 5rem;
-}
-.title-text {
-  font-size: 2.5rem;
-  line-height: 5rem;
-}
 .img {
   padding-top: 7.5%;
   width: 100%;
@@ -49,6 +35,7 @@
 </style>
 
 <script>
+import Title from "@/components/Title.vue"
 import List from "@/components/List.vue"
 import { collection, getDocs, query, orderBy, where } from "firebase/firestore"
 import { db } from "@/firebase.js"
@@ -56,6 +43,7 @@ import { getStorage, ref, listAll, getDownloadURL } from "@firebase/storage"
 
 export default {
   components: {
+    Title,
     List,
   },
   data() {

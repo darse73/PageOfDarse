@@ -34,27 +34,27 @@
       />
       <transition name="menu">
         <ul v-show="menuList" class="menu-list">
-          <li class="button">
+          <li class="button" @click="menuClose">
             <router-link class="router-link" to="/works">WORKS</router-link>
           </li>
-          <li class="button">
+          <li class="button" @click="menuClose">
             <router-link class="router-link" to="/memorandum"
               >MEMORANDUM</router-link
             >
           </li>
-          <li class="button">
+          <li class="button" @click="menuClose">
             <router-link class="router-link" to="/tweet">TWEET</router-link>
           </li>
-          <li class="button">
+          <li class="button" @click="menuClose">
             <router-link class="router-link" to="/upload">UPLOAD</router-link>
           </li>
-          <li class="button">
+          <li class="button" @click="menuClose">
             <router-link class="router-link" to="/about">ABOUT</router-link>
           </li>
         </ul>
       </transition>
       <transition name="curten">
-        <div class="curten" v-show="menuList" @click="curten">
+        <div class="curten" v-show="menuList" @click="menuClose">
       <Curten/></div>
       </transition>
     </div>
@@ -200,9 +200,8 @@ export default {
     menuIcon() {
       this.menuList = !this.menuList
     },
-    curten() {
+    menuClose() {
       this.menuList = false
-    }
-  },
-}
+    },
+}}
 </script>

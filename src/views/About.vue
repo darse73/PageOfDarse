@@ -1,9 +1,6 @@
 <template>
   <div class="about">
-    <div class="title">
-      <img class="title-img" src="../assets/jerryfish.png" />
-      <h2 class="title-tex">ABOUT</h2>
-    </div>
+      <Title><template v-slot:front>ABOUT</template></Title>
     <div class="paragraph">
       <div class="s-title">
         <img class="s-title-img" src="../assets/jerryfish.png" />
@@ -59,24 +56,11 @@
 </template>
 
 <style scoped>
-.title {
-  display: flex;
-  height: 5rem;
-  margin-bottom: 5rem;
-}
-.title-img {
-  width: 5rem;
-}
-.title-tex {
-  font-size: 2.5rem;
-  line-height: 5rem;
-}
 h3 {
   font-size: 1.8rem;
 }
 .paragraph {
-  padding-left: 2rem;
-  margin-bottom: 3rem;
+  padding: 3rem 2rem;
 }
 .s-title {
   display: flex;
@@ -93,4 +77,18 @@ p {
   font-size: 1.5rem;
   line-height: 3.3rem;
 }
+@media screen and (max-width: 599px){
+  p {
+    display: inline;
+  }
+}
 </style>
+
+<script>
+import Title from "@/components/Title.vue"
+export default {
+  components: {
+    Title
+  }
+}
+</script>

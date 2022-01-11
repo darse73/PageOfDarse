@@ -20,13 +20,14 @@
 }
 .cut-in {
     position: fixed;
-    top: 0;
+    top: 9rem;
     left: 0;
     background-color: rgba(147, 230, 255, 0.911);
     width: 100%;
     height: 100vh;
-    z-index: 3;
+    z-index: 5;
 }
+@media screen and (min-width: 1024px){
 .title {
     position: absolute;
     top: 50%;
@@ -34,6 +35,27 @@
     transform: translate(-50%,-50%);
     font-size: 10rem;
     color: rgb(53, 99, 252);
+}
+}
+@media screen and (max-width: 1024px){
+.title {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    font-size: 8rem;
+    color: rgb(53, 99, 252);
+}
+}
+@media screen and (max-width: 599px){
+.title {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    font-size: 4.7rem;
+    color: rgb(53, 99, 252);
+}
 }
 </style>
 

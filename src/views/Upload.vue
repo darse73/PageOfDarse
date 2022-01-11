@@ -1,9 +1,6 @@
 <template>
   <div class="upload">
-    <div class="title">
-      <img class="title-img" src="../assets/jerryfish.png" />
-      <h2 class="title-text">最近更新されたページ</h2>
-    </div>
+      <Title><template v-slot:front>UPLOAD</template></Title>
     <div class="explanation">
       <h3>※このページは（今のところ）主がアップロードするように作られています</h3>
     </div>
@@ -55,17 +52,6 @@
 </template>
 
 <style scoped>
-.title {
-  display: flex;
-  height: 5rem;
-}
-.title-img {
-  width: 5rem;
-}
-.title-text {
-  font-size: 2.5rem;
-  line-height: 5rem;
-}
 .explanation {
   margin: 5rem 3rem;
   font-size: 2rem;
@@ -76,6 +62,9 @@
 .form-selected {
   font-size: 2.5rem;
 }
+  .form-selected button {
+   margin-right: 0.5rem;
+  }
 .form-title, .form-img, .form-comment, .form-url, .submit {
   font-size: 1.8rem;
   margin-top: 1.5rem;
@@ -83,14 +72,29 @@
 .on {
   background-color: rgb(207, 207, 207);
 }
+
+@media screen and (max-width: 599px){
+.explanation {
+  margin: 0rem 3rem;
+  font-size: 2rem;
+}
+  .form-selected button {
+    display: block;
+    margin-top: 0.5rem;
+  }
+}
 </style>
 
 <script>
+import Title from "@/components/Title.vue"
 import { getStorage, ref, uploadBytesResumable } from "firebase/storage"
 import { collection, addDoc, serverTimestamp } from "firebase/firestore"
 import { db } from "@/firebase.js"
 
 export default {
+  components: {
+    Title
+  },
   data() {
     return {
       title: "",

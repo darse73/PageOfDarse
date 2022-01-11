@@ -33,4 +33,10 @@
 .details li {
   margin-bottom: 1rem;
 }
+
+@media screen and (max-width: 1024px){
+.greeting {
+  display: none;
+}
+}
 </style>

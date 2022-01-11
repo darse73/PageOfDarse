@@ -40,7 +40,7 @@
 <style scoped>
 span{
     color: red;
-    font-size: 2.5rem;
+    font-size: 2.2rem;
 }
 .purpose {
     border: 0.2rem solid rgb(107, 107, 255);

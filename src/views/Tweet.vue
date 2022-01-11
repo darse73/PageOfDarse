@@ -1,10 +1,7 @@
 <template>
   <div class="tweet">
     <div class="update-lists">
-      <div class="title">
-        <img class="title-img" src="../assets/jerryfish.png" />
-        <h2 class="title-text">tweet</h2>
-      </div>
+      <Title><template v-slot:front>TWEET</template></Title>
       <div class="lists" v-for="data in datas" :key="data.id">
           <div class="list">
               <div class="date">{{ data.date }}</div>
@@ -16,17 +13,6 @@
 </template>
 
 <style scoped>
-.title {
-  display: flex;
-  height: 5rem;
-}
-.title-img {
-  width: 5rem;
-}
-.title-text {
-  font-size: 2.5rem;
-  line-height: 5rem;
-}
 .list {
   border: 0.2rem solid rgb(2, 61, 255);
   margin: 2rem 3rem 0;
@@ -41,45 +27,10 @@
 .comment {
     font-size: 1.5rem;
 }
-
-/* .page {
-  margin: 0 2rem 2rem 5rem;
-  padding: 1rem;
-  display: grid;
-  grid-template-rows: 2rem 11rem;
-  grid-template-columns: 23.4rem 23.4rem;
-  background-color: rgb(255, 255, 255);
-}
-.page:hover {
-  transform: scale(1.01);
-  transition: all 0.3s ease 0s;
-}
-h3 {
-  margin: 0;
-}
-.title {
-  margin-bottom: 0.5rem;
-  grid-row: 1;
-  grid-column: 1;
-}
-.page img {
-  width: 21rem;
-  grid-row: 2;
-  grid-column: 1;
-}
-.page video {
-  width: 100%;
-  height: 100%;
-}
-.comment {
-  grid-row: 1/3;
-  grid-column: 2;
-  text-align: left;
-  padding-left: 1rem;
-} */
 </style>
 
 <script>
+import Title from "@/components/Title.vue"
 import { collection, getDocs, orderBy, query, where } from "firebase/firestore"
 import { db } from "@/firebase.js"
 import {
@@ -91,6 +42,9 @@ import {
 } from "@firebase/storage"
 
 export default {
+  components: {
+    Title,
+  },
   data() {
     return {
       datas: [],

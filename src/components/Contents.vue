@@ -14,6 +14,9 @@
 </template>
 
 <style scoped>
+.contents {
+  padding: 0 1rem;
+}
 .title {
   display: flex;
   position: relative;
@@ -30,15 +33,20 @@
 }
 .date {
   position: absolute;
-  right: 0;
+  right: 1rem;
   bottom: 0;
   font-size: 2rem;
   transform: translateY(120%);
 }
 .main {
-  font-size: 2.5rem;
+  font-size: 2rem;
 }
 .main p {
   line-height: 3.3rem;
+}
+@media screen and (max-width: 599px){
+  .title h2{
+    font-size: 2rem;
+  }
 }
 </style>
