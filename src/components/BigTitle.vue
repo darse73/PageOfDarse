@@ -19,7 +19,6 @@
   background-color: rgba(228, 243, 255, 0.877);
   border-bottom: 1rem solid rgb(95, 95, 255);
 }
-@media screen and (min-width: 1025px){
   .title-text {
   text-align: center;
   width: 100%;
@@ -28,6 +27,7 @@
   left: 50%;
   transform: translate(-50%, -50%);
 }
+@media screen and (min-width: 1025px){
 .span-jer {
   color: rgba(0, 89, 255, 0.699);
   font-size: 6rem;
@@ -41,14 +41,6 @@
 }
 }
 @media screen and (max-width: 1024px){
-  .title-text {
-  text-align: center;
-  width: 100%;
-  position: absolute;
-  top: 55%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
 .span-jer {
   color: rgba(0, 89, 255, 0.699);
   font-size: 6rem;
@@ -67,7 +59,7 @@
   text-align: center;
   width: 100%;
   position: absolute;
-  top: 60%;
+  top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
 }

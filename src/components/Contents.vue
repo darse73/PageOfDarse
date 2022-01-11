@@ -39,7 +39,7 @@
   transform: translateY(120%);
 }
 .main {
-  font-size: 2rem;
+  font-size: 2.5rem;
 }
 .main p {
   line-height: 3.3rem;

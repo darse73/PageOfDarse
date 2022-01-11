@@ -13,11 +13,13 @@
 </template>
 
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Mochiy+Pop+One&family=Noto+Sans+JP:wght@500&display=swap');
 * {
   padding: 0;
   margin: 0;
   list-style: none;
   font-size: 62.5%;
+font-family: 'Noto Sans JP', sans-serif;
 }
 .router-link {
   text-decoration: none;

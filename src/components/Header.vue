@@ -34,23 +34,23 @@
       />
       <transition name="menu">
         <ul v-show="menuList" class="menu-list">
-          <li class="button" @click="menuClose">
-            <router-link class="router-link" to="/works">WORKS</router-link>
-          </li>
-          <li class="button" @click="menuClose">
+          
+            <router-link class="router-link" to="/works"><li class="button" @click="menuClose">WORKS</li></router-link>
+          
             <router-link class="router-link" to="/memorandum"
-              >MEMORANDUM</router-link
+              >
+          <li class="button" @click="menuClose">MEMORANDUM
+          </li></router-link
             >
-          </li>
-          <li class="button" @click="menuClose">
-            <router-link class="router-link" to="/tweet">TWEET</router-link>
-          </li>
-          <li class="button" @click="menuClose">
-            <router-link class="router-link" to="/upload">UPLOAD</router-link>
-          </li>
-          <li class="button" @click="menuClose">
-            <router-link class="router-link" to="/about">ABOUT</router-link>
-          </li>
+            <router-link class="router-link" to="/tweet">
+          <li class="button" @click="menuClose">TWEET</li></router-link>
+          
+          
+            <router-link class="router-link" to="/upload"><li class="button" @click="menuClose">UPLOAD          </li></router-link>
+
+            <router-link class="router-link" to="/about">
+          <li class="button" @click="menuClose">ABOUT</li></router-link>
+          
         </ul>
       </transition>
       <transition name="curten">
@@ -161,12 +161,12 @@
     transform: translateX(0);
   }
   .button {
-    font-size: 4rem;
+    font-size: 2.5rem;
     padding: 1rem 2rem;
     border-bottom: rgb(0, 140, 255) dotted 0.1rem;
   }
   .button:hover {
-    font-size: 4.2rem;
+    font-size: 2.7rem;
     padding: 0.85rem 2rem;
   }
   .curten-leave-active,
