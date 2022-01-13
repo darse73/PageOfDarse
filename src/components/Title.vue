@@ -3,7 +3,7 @@
     <img class="title-img" src="@/assets/jerryfish.png" />
     <h2 class="title-text">
       <slot name="front" />
-      <div class="back"><slot name="back" /></div>
+      <div ref="back" :class="{ back: isBack }"><slot name="back" /></div>
     </h2>
   </div>
 </template>
@@ -38,3 +38,19 @@
 }
 }
 </style>
+
+<script>
+export default {
+  data() {
+    return {
+      isBack: false
+    }
+  },
+  mounted() {
+    const back = this.$refs.back
+    if(back.textContent){
+      this.isBack = true
+    }
+  }
+}
+</script>

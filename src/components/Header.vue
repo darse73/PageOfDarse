@@ -62,6 +62,7 @@
 </template>
 
 <style scoped>
+@import url('https://fonts.googleapis.com/css2?family=Kosugi+Maru&family=Mochiy+Pop+One&family=Noto+Sans+JP:wght@500&display=swap');
 .header {
   height: 8rem;
   width: 100%;
@@ -84,8 +85,7 @@
   line-height: 8rem;
   color: rgb(34, 34, 34);
   font-size: 3.5rem;
-  margin-left: 0.5rem;
-  font-family: "arial black";
+  margin-left: 0.5rem;font-family: 'Mochiy Pop One', sans-serif;
 }
 @media screen and (min-width: 1025px) {
   .button-container {

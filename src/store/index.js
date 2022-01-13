@@ -5,7 +5,7 @@ Vue.use(Vuex)
 
 const store = new Vuex.Store({
     state: {
-        title:"a"
+        title:"",
     },
     mutations: {
         changeTitle (state, title) {

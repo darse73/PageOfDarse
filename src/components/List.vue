@@ -10,7 +10,6 @@
 </template>
 
 <style scoped>
-@media screen and (min-width: 1024px){
 .list {
   border: 0.2rem solid rgb(2, 61, 255);
   margin: 2rem 3rem 0;
@@ -45,7 +44,7 @@
   font-size: 1.5rem;
   grid-row: 2;
   grid-column: 5/7;
-}
+  line-height: 3.3rem;
 }
 @media screen and (max-width: 599px){
 .list {
@@ -53,6 +52,7 @@
   margin: 2rem 3rem 0;
   padding: 1.5rem;
   display: grid;
+  grid-template-columns: 1fr;
   background-color: rgb(255, 255, 255);
 }
 .date {
@@ -63,7 +63,6 @@
   font-size: 1.7rem;
   grid-row: 2;
   padding-bottom: 0.5rem;
-
 }
 .preview {
   display: none;
