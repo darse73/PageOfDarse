@@ -35,8 +35,13 @@
 }
 
 @media screen and (max-width: 1024px){
-.greeting {
-  display: none;
-}
+  .facial-img-container {
+    margin-top: 5rem;
+    width: 50%;
+  }
+  .details {
+    margin: 2rem auto;
+    width: 80%;
+  }
 }
 </style>
