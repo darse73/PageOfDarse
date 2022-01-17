@@ -34,10 +34,10 @@
   margin-bottom: 1rem;
 }
 
-@media screen and (max-width: 1024px){
+@media screen and (max-width: 1024px) {
   .facial-img-container {
     margin-top: 5rem;
-    width: 50%;
+    width: 30%;
   }
   .details {
     margin: 2rem auto;

@@ -3,10 +3,10 @@
     <div class="update-lists">
       <Title><template v-slot:front>TWEET</template></Title>
       <div class="lists" v-for="data in datas" :key="data.id">
-          <div class="list">
-              <div class="date">{{ data.date }}</div>
-              <div class="comment">{{ data.comment }}</div>
-          </div>
+        <div class="list">
+          <div class="date">{{ data.date }}</div>
+          <div class="comment">{{ data.comment }}</div>
+        </div>
       </div>
     </div>
   </div>
@@ -22,10 +22,10 @@
   background-color: rgb(255, 255, 255);
 }
 .date {
-    margin: auto 0;
+  margin: auto 0;
 }
 .comment {
-    font-size: 1.5rem;
+  font-size: 1.5rem;
 }
 </style>
 
@@ -53,7 +53,6 @@ export default {
     }
   },
   async created() {
-
     let num = 0
     const q = query(
       collection(db, "data"),
@@ -98,7 +97,7 @@ export default {
           this.imgPaths.push(itemRef.fullPath)
         })
       })
-      .then(async() => {
+      .then(async () => {
         //   this.imgPaths.forEach((path) => {
         //     console.log(path)
         //   const imgRef = ref(storage, `${path}`)
@@ -109,10 +108,10 @@ export default {
         for (const path of this.imgPaths) {
           console.log(path)
           const imgRef = ref(storage, `${path}`)
-          await getMetadata(imgRef).then( (metadata) => {
+          await getMetadata(imgRef).then((metadata) => {
             console.log(metadata.customMetadata.type)
             if (metadata.customMetadata.type === "memorandum") {
-                 getDownloadURL(imgRef).then((url) => {
+              getDownloadURL(imgRef).then((url) => {
                 this.imgUrls.push(url)
               })
             }

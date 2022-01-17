@@ -1,10 +1,13 @@
 <template>
-  <div><!-- app.vueのstylescopedが子要素の一番上に効いてしまうため -->
+  <div>
+    <!-- app.vueのstylescopedが子要素の一番上に効いてしまうため -->
     <div class="contents">
       <div class="title">
         <img src="@/assets/jerryfish.png" alt="くらげ" class="s-jerryfish" />
-        <h2><slot name="title-text"></slot>
-        <span class="date">作成日 <slot name="date"></slot></span></h2>
+        <h2>
+          <slot name="title-text"></slot>
+          <span class="date">作成日 <slot name="date"></slot></span>
+        </h2>
       </div>
       <div class="main">
         <slot name="main"></slot>
@@ -44,8 +47,8 @@
 .main p {
   line-height: 3.3rem;
 }
-@media screen and (max-width: 599px){
-  .title h2{
+@media screen and (max-width: 599px) {
+  .title h2 {
     font-size: 2rem;
   }
 }

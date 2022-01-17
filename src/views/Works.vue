@@ -1,7 +1,10 @@
 <template>
   <div class="works">
     <div class="update-lists">
-      <Title><template v-slot:front>WORKS</template><template v-slot:back>最近更新されたページ</template></Title>
+      <Title
+        ><template v-slot:front>WORKS</template
+        ><template v-slot:back>最近更新されたページ</template></Title
+      >
       <div class="lists" v-for="data in datas" :key="data.id">
         <router-link :to="`${data.url}`" class="router-link">
           <List>
@@ -91,7 +94,7 @@ export default {
         title: doc.data().title,
         comment: doc.data().comment,
         id: num,
-        url:doc.data().url
+        url: doc.data().url,
       })
       num += 1
       console.log(num)
@@ -105,7 +108,7 @@ export default {
           this.imgPaths.push(itemRef.fullPath)
         })
       })
-      .then(async() => {
+      .then(async () => {
         //   this.imgPaths.forEach((path) => {
         //     console.log(path)
         //   const imgRef = ref(storage, `${path}`)
@@ -116,10 +119,10 @@ export default {
         for (const path of this.imgPaths) {
           console.log(path)
           const imgRef = ref(storage, `${path}`)
-          await getMetadata(imgRef).then( (metadata) => {
+          await getMetadata(imgRef).then((metadata) => {
             console.log(metadata.customMetadata.type)
             if (metadata.customMetadata.type === "works") {
-                 getDownloadURL(imgRef).then((url) => {
+              getDownloadURL(imgRef).then((url) => {
                 this.imgUrls.push(url)
               })
             }

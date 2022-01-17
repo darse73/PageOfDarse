@@ -34,35 +34,37 @@
       />
       <transition name="menu">
         <ul v-show="menuList" class="menu-list">
-          
-            <router-link class="router-link" to="/works"><li class="button" @click="menuClose">WORKS</li></router-link>
-          
-            <router-link class="router-link" to="/memorandum"
-              >
-          <li class="button" @click="menuClose">MEMORANDUM
-          </li></router-link
-            >
-            <router-link class="router-link" to="/tweet">
-          <li class="button" @click="menuClose">TWEET</li></router-link>
-          
-          
-            <router-link class="router-link" to="/upload"><li class="button" @click="menuClose">UPLOAD          </li></router-link>
+          <router-link class="router-link" to="/works"
+            ><li class="button" @click="menuClose">WORKS</li></router-link
+          >
 
-            <router-link class="router-link" to="/about">
-          <li class="button" @click="menuClose">ABOUT</li></router-link>
-          
+          <router-link class="router-link" to="/memorandum">
+            <li class="button" @click="menuClose">MEMORANDUM</li></router-link
+          >
+          <router-link class="router-link" to="/tweet">
+            <li class="button" @click="menuClose">TWEET</li></router-link
+          >
+
+          <router-link class="router-link" to="/upload"
+            ><li class="button" @click="menuClose">UPLOAD</li></router-link
+          >
+
+          <router-link class="router-link" to="/about">
+            <li class="button" @click="menuClose">ABOUT</li></router-link
+          >
         </ul>
       </transition>
       <transition name="curten">
         <div class="curten" v-show="menuList" @click="menuClose">
-      <Curten/></div>
+          <Curten />
+        </div>
       </transition>
     </div>
   </div>
 </template>
 
 <style scoped>
-@import url('https://fonts.googleapis.com/css2?family=Kosugi+Maru&family=Mochiy+Pop+One&family=Noto+Sans+JP:wght@500&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Kosugi+Maru&family=Mochiy+Pop+One&family=Noto+Sans+JP:wght@500&display=swap");
 .header {
   height: 8rem;
   width: 100%;
@@ -85,7 +87,8 @@
   line-height: 8rem;
   color: rgb(34, 34, 34);
   font-size: 3.5rem;
-  margin-left: 0.5rem;font-family: 'Mochiy Pop One', sans-serif;
+  margin-left: 0.5rem;
+  font-family: "Mochiy Pop One", sans-serif;
 }
 @media screen and (min-width: 1025px) {
   .button-container {
@@ -189,7 +192,7 @@ import Curten from "@/components/Curten.vue"
 
 export default {
   components: {
-    Curten
+    Curten,
   },
   data() {
     return {
@@ -203,5 +206,6 @@ export default {
     menuClose() {
       this.menuList = false
     },
-}}
+  },
+}
 </script>

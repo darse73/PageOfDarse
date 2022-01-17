@@ -28,14 +28,14 @@
   font-size: 1.7rem;
 }
 @media screen and (max-width: 599px) {
-.title {
-  display: flex;
-  height: 10rem;
-}
-.back {
+  .title {
+    display: flex;
+    height: 10rem;
+  }
+  .back {
     display: block;
-  line-height: 3rem;
-}
+    line-height: 3rem;
+  }
 }
 </style>
 
@@ -43,14 +43,14 @@
 export default {
   data() {
     return {
-      isBack: false
+      isBack: false,
     }
   },
   mounted() {
     const back = this.$refs.back
-    if(back.textContent){
+    if (back.textContent) {
       this.isBack = true
     }
-  }
+  },
 }
 </script>

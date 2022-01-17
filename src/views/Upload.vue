@@ -1,8 +1,10 @@
 <template>
   <div class="upload">
-      <Title><template v-slot:front>UPLOAD</template></Title>
+    <Title><template v-slot:front>UPLOAD</template></Title>
     <div class="explanation">
-      <h3>※このページは（今のところ）主がアップロードするように作られています</h3>
+      <h3>
+        ※このページは（今のところ）主がアップロードするように作られています
+      </h3>
     </div>
     <div class="form">
       <div class="form-selected">
@@ -32,7 +34,7 @@
         </div>
         <div class="form-url">
           <h3>URL</h3>
-          <input type="text" v-model="url" required>
+          <input type="text" v-model="url" required />
         </div>
       </div>
       <div class="tweet" v-else-if="switching === '3'">
@@ -46,7 +48,9 @@
         ></textarea>
       </div>
       <div class="none" v-else></div>
-      <button v-on:click="submit" class="submit">送信</button>
+      <button @click="submit" class="submit">送信</button>
+      <button class="login" @click="login"></button>
+      <button class="logout" @click="logout"></button>
     </div>
   </div>
 </template>
@@ -62,22 +66,26 @@
 .form-selected {
   font-size: 2.5rem;
 }
-  .form-selected button {
-   margin-right: 0.5rem;
-  }
-.form-title, .form-img, .form-comment, .form-url, .submit {
-  font-size: 1.8rem;
+.form-selected button {
+  margin-right: 0.5rem;
+}
+.form-title,
+.form-img,
+.form-comment,
+.form-url,
+.submit {
+  font-size: 1.5rem;
   margin-top: 1.5rem;
 }
 .on {
   background-color: rgb(207, 207, 207);
 }
 
-@media screen and (max-width: 599px){
-.explanation {
-  margin: 0rem 3rem;
-  font-size: 2rem;
-}
+@media screen and (max-width: 599px) {
+  .explanation {
+    margin: 0rem 3rem;
+    font-size: 2rem;
+  }
   .form-selected button {
     display: block;
     margin-top: 0.5rem;
@@ -90,10 +98,17 @@ import Title from "@/components/Title.vue"
 import { getStorage, ref, uploadBytesResumable } from "firebase/storage"
 import { collection, addDoc, serverTimestamp } from "firebase/firestore"
 import { db } from "@/firebase.js"
+import {
+  getAuth,
+  signInWithPopup,
+  GithubAuthProvider,
+  signOut,
+} from "firebase/auth"
+const auth = getAuth()
 
 export default {
   components: {
-    Title
+    Title,
   },
   data() {
     return {
@@ -146,8 +161,8 @@ export default {
           if (this.switching === "1") {
             const metadata = {
               customMetadata: {
-                "type": "works"
-              }
+                type: "works",
+              },
             }
             const uploadTask = uploadBytesResumable(storageRef, file, metadata)
             console.log(uploadTask)
@@ -158,15 +173,15 @@ export default {
               comment: this.comment,
               date: serverTimestamp(),
               url: this.url,
-              type: "works"
+              type: "works",
             })
             console.log(docRef)
           } else if (this.switching === "2") {
             //img
             const metadata = {
               customMetadata: {
-                "type": "memorandums"
-              }
+                type: "memorandums",
+              },
             }
             const uploadTask = uploadBytesResumable(storageRef, file, metadata)
             console.log(uploadTask)
@@ -177,32 +192,50 @@ export default {
               comment: this.comment,
               date: serverTimestamp(),
               url: this.url,
-              type: "memorandums"
+              type: "memorandums",
             })
             console.log(docRef)
           }
-      this.comment = ""
-      alert("送信成功！")
+          this.comment = ""
+          alert("送信成功！")
           fileHolder.value = ""
           this.title = ""
           this.url = ""
-      }} else if (this.switching === "3") {
-        if (
-          this.comment === ""
-        ) {
+        }
+      } else if (this.switching === "3") {
+        if (this.comment === "") {
           alert("項目を埋めてください。")
         } else {
-        //title,comment,date
-        const docRef = await addDoc(collection(db, "data"), {
-          comment: this.comment,
-              date: serverTimestamp(),
-          type: "tweet"
+          //title,comment,date
+          const docRef = await addDoc(collection(db, "data"), {
+            comment: this.comment,
+            date: serverTimestamp(),
+            type: "tweet",
+          })
+          console.log(docRef)
+          this.comment = ""
+          alert("送信成功！")
+        }
+      }
+    },
+    login() {
+      const provider = new GithubAuthProvider()
+      signInWithPopup(auth, provider)
+        .then((result) => {
+          const token =
+            GithubAuthProvider.credentialFromResult(result).accessToken
+          const user = result.user
+          console.log(token)
+          console.log(user)
         })
-        console.log(docRef)
-      this.comment = ""
-      alert("送信成功！")
-      }
-      }
+        .catch((e) => {
+          console.log(e)
+        })
+    },
+    logout() {
+      signOut(auth).then(() => {
+        console.log("logout success")
+      })
     },
   },
 }

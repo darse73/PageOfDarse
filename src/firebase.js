@@ -1,4 +1,4 @@
-import { initializeApp } from 'firebase/app';
+import { initializeApp } from "firebase/app"
 import { getStorage } from "firebase/storage"
 import { getFirestore } from "firebase/firestore"
 
@@ -12,12 +12,12 @@ const firebaseConfig = {
   storageBucket: "pageofdarse.appspot.com",
   messagingSenderId: "360556229496",
   appId: "1:360556229496:web:9d95860a69fc7c5ae3ce8d",
-  measurementId: "G-NS2WCBJD5L"
-};
-const firebaseApp = initializeApp(firebaseConfig);
+  measurementId: "G-NS2WCBJD5L",
+}
+const firebaseApp = initializeApp(firebaseConfig)
 
 // Get a reference to the storage service, which is used to create references in your storage bucket
-const storage = getStorage(firebaseApp);
+const storage = getStorage(firebaseApp)
 console.log(storage)
 export const db = getFirestore()
 console.log(db)

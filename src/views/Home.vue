@@ -1,8 +1,10 @@
 <template>
   <div class="home">
-    
     <div class="update-lists">
-      <Title><template v-slot:front>HOME</template><template v-slot:back>最近更新されたページ</template></Title>
+      <Title
+        ><template v-slot:front>HOME</template
+        ><template v-slot:back>最近更新されたページ</template></Title
+      >
       <div class="lists" v-for="data in datas" :key="data.id">
         <router-link :to="`${data.url}`" class="router-link">
           <List>
@@ -86,7 +88,7 @@ export default {
         title: doc.data().title,
         comment: doc.data().comment,
         id: num,
-        url:doc.data().url
+        url: doc.data().url,
       })
       num += 1
       console.log(num)

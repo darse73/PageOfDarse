@@ -22,48 +22,48 @@ const routes = [
   {
     path: "/works",
     name: "Works",
-    component: Works
+    component: Works,
   },
   {
     path: "/memorandum",
     name: "Memorandum",
-    component: Memorandum
+    component: Memorandum,
   },
   {
     path: "/tweet",
     name: "Tweet",
-    component: Tweet
+    component: Tweet,
   },
   {
     path: "/upload",
     name: "Upload",
-    component: Upload
+    component: Upload,
   },
   {
     path: "/about",
     name: "About",
-    component: About
+    component: About,
   },
   {
     path: "/works/calculator",
     name: "Calculator",
-    component: Calculator
+    component: Calculator,
   },
   {
     path: "/works/calculator2",
     name: "Calculator2",
-    component: Calculator2
+    component: Calculator2,
   },
   {
     path: "/memorandums/mv-error",
     name: "MvError",
-    component: MvError
+    component: MvError,
   },
   {
     path: "/memorandums/hover",
     name: "Hover",
-    component: Hover
-  }
+    component: Hover,
+  },
 ]
 
 const router = new VueRouter({
