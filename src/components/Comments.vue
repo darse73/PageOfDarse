@@ -139,20 +139,36 @@ export default {
   },
   methods: {
     async submit() {
-      if (user.displayName == null) {
-        user.displayName = "ななしのごんべい"
+      if (user) {
+        if (user.displayName == null) {
+          user.displayName = "ログイン済みの名無しさん"
+        }
+        const path = location.pathname
+        const pathArr = path.split("/")
+        const type = pathArr.slice(-1)
+        const docRef = await addDoc(collection(db, "comment"), {
+          type: type,
+          date: serverTimestamp(),
+          name: user.displayName,
+          icon: user.photoURL,
+          comment: this.inputCom,
+        })
+        console.log(docRef)
+        window.location.reload()
+      } else {
+        const path = location.pathname
+        const pathArr = path.split("/")
+        const type = pathArr.slice(-1)
+        const docRef = await addDoc(collection(db, "comment"), {
+          type: type,
+          date: serverTimestamp(),
+          name: "ななしのごんべい",
+          icon: require("@/assets/human.png"),
+          comment: this.inputCom,
+        })
+        console.log(docRef)
+        window.location.reload()
       }
-      const path = location.pathname
-      const pathArr = path.split("/")
-      const type = pathArr.slice(-1)
-      const docRef = await addDoc(collection(db, "comment"), {
-        type: type,
-        date: serverTimestamp(),
-        name: user.displayName,
-        icon: user.photoURL,
-        comment: this.inputCom,
-      })
-      console.log(docRef)
       this.inputCom = ""
       alert("送信成功！")
     },

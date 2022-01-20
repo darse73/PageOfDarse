@@ -24,6 +24,15 @@
       <li class="button">
         <router-link class="router-link" to="/about">ABOUT</router-link>
       </li>
+      <li class="login-container">
+        <img
+          :src="loginMark"
+          alt=""
+          class="login"
+          @click="loginCheck"
+          ref="login"
+        />
+      </li>
     </ul>
     <div class="menu">
       <img
@@ -90,9 +99,26 @@
   margin-left: 0.5rem;
   font-family: "Mochiy Pop One", sans-serif;
 }
+.login-container {
+  background-color: rgb(232, 236, 252);
+  height: 3.5rem;
+  width: 3.5rem;
+  border-radius: 50%;
+  margin-top: 2.5rem;
+  border: solid 0.2rem rgb(82, 93, 247);
+  transition: all 0.3s;
+  overflow: hidden;
+}
+.login {
+  width: 3.45rem;
+}
+.login-container:hover {
+  transform: scale(1.1);
+}
 @media screen and (min-width: 1025px) {
   .button-container {
     display: flex;
+    padding-right: 2rem;
   }
   .button {
     position: relative;
@@ -189,6 +215,13 @@
 
 <script>
 import Curten from "@/components/Curten.vue"
+import {
+  getAuth,
+  onAuthStateChanged,
+  signInWithPopup,
+  GithubAuthProvider,
+  signOut,
+} from "firebase/auth"
 
 export default {
   components: {
@@ -196,10 +229,46 @@ export default {
   },
   data() {
     return {
+      loginMark: "",
       menuList: false,
     }
   },
+  mounted() {
+    const auth = getAuth()
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        this.loginMark = user.photoURL
+      } else {
+        this.loginMark = require("@/assets/human.png")
+      }
+      console.log(user)
+    })
+  },
   methods: {
+    loginCheck() {
+      const auth = getAuth()
+      const user = auth.currentUser
+      if (user) {
+        signOut(auth).then(() => {
+          console.log("logout success")
+          this.loginMark = require("@/assets/human.png")
+        })
+      } else {
+        const provider = new GithubAuthProvider()
+        signInWithPopup(auth, provider)
+          .then((result) => {
+            const token =
+              GithubAuthProvider.credentialFromResult(result).accessToken
+            const user = result.user
+            console.log(token)
+            console.log(user)
+            this.loginMark = user.photoURL
+          })
+          .catch((e) => {
+            console.log(e)
+          })
+      }
+    },
     menuIcon() {
       this.menuList = !this.menuList
     },
