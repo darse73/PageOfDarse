@@ -114,7 +114,7 @@ export default {
           console.log(path)
           const imgRef = ref(storage, `${path}`)
           await getDownloadURL(imgRef).then((url) => {
-            this.imgUrls.push(url)
+            this.imgUrls.unshift(url)
           })
         }
 

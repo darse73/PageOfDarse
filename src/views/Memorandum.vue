@@ -123,7 +123,7 @@ export default {
             console.log(metadata.customMetadata.type)
             if (metadata.customMetadata.type === "memorandums") {
               getDownloadURL(imgRef).then((url) => {
-                this.imgUrls.push(url)
+                this.imgUrls.unshift(url)
               })
             }
           })
